@@ -19,4 +19,8 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', 'jwtAuth.urls'),
+    path('prompts/', 'prompts.urls'),
+    path('images/', 'images.urls'),
+    path('comments/', 'comments.urls'),
 ]

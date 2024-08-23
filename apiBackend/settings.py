@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'jwtAuth',
     'prompts',
     'images',
+    'comments',
 ]
 
 MIDDLEWARE = [

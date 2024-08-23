@@ -8,7 +8,7 @@ class Image(models.Model):
     createdBy = models.ForeignKey(
         "jwtAuth.User",
         on_delete=models.CASCADE,
-        related_name="images"
+        related_name="userImages"
         )
 
     def __str__(self):
