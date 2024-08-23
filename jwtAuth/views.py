@@ -4,8 +4,8 @@ from .serializers.common import UserSerializer
 
 class SignUpView(APIView):
     def post(self, request):
-        newUser = UserSerializer(data= request.data)
-        if newUser.is_valid:
+        newUser = UserSerializer(data = request.data)
+        if newUser.is_valid():
             newUser.save()
             return Response({"message":"Success"})
         print(newUser)
