@@ -4,7 +4,9 @@ from django.db import models
 
 class Prompt(models.Model):
     promptName = models.CharField(max_length=20)
-    promptBitmapAsBinary = models.BinaryField()
+    promptImageData = models.CharField()
+    promptWidth = models.PositiveIntegerField()
+    promptHeight = models.PositiveIntegerField()
     createdBy = models.ForeignKey(
         "jwtAuth.User",
         on_delete=models.DO_NOTHING,

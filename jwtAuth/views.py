@@ -9,4 +9,4 @@ class SignUpView(APIView):
             newUser.save()
             return Response({"message":"Success"})
         print(newUser)
-        return Response(newUser.errors)
+        return Response(newUser.errors, 400)
