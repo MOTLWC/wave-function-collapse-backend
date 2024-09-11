@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import environ
 from datetime import timedelta
+import dj_database_url
 
 # Env imports
 env = environ.Env()
@@ -99,15 +100,25 @@ WSGI_APPLICATION = 'apiBackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# ! For postgres development
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'wfc_database',
+#         'USER': env('USER'),
+#         'PASSWORD': env('PASS'),
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
+
+# ! For Deployed Neon DataBase
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wfc_database',
-        'USER': env('USER'),
-        'PASSWORD': env('PASS'),
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
+    'default': dj_database_url.config(
+        default=env('DB_URI'),
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
 
 # Custom User Model
